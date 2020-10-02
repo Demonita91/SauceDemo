@@ -11,14 +11,15 @@ public class LoginPage extends BasePage {
     public static final By LOGIN_BUTTON = By.id("login-button");
     public static final String URL = "https://www.saucedemo.com/";
     public static By ErrorMessageUserNameIsRequired = By.xpath("//h3[text()='Username is required']");
-    public static By ErrorMessagePasswordIsRequired  = By.xpath("//h3[text()='Password is required']");
-    public static By ErrorMessageUsernameAndPasswordIsRequired  = By.xpath("//h3[@data-test='error']");
+    public static By ErrorMessagePasswordIsRequired = By.xpath("//h3[text()='Password is required']");
+    public static By ErrorMessageUsernameAndPasswordIsRequired = By.xpath("//h3[@data-test='error']");
     public static String emptyString = "";
     public static String incorrectUsername = "ghjd%$:125'?ikil";
     public static String incorrectPassword = "698$2%$:fhj'354787";
     public static String errorMessageUsernameIsRequired = "Epic sadface: Username is required";
     public static String errorMessagePasswordIsRequired = "Epic sadface: Password is required";
-    public static String errorMessageUsernameAndPasswordDoNotMatch = "Epic sadface: Username and password do not match any user in this service";;
+    public static String errorMessageUsernameAndPasswordDoNotMatch = "Epic sadface: Username and password do not match any user in this service";
+    ;
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -37,15 +38,17 @@ public class LoginPage extends BasePage {
 
     public String errorMessageUserName() {
         String result = driver.findElement(ErrorMessageUserNameIsRequired).getText();
-        return(result);
+        return (result);
     }
+
     public String errorMessagePassword() {
         String result = driver.findElement(ErrorMessagePasswordIsRequired).getText();
-        return(result);
+        return (result);
     }
+
     public String errorMessageUsernameAndPassword() {
         String result = driver.findElement(ErrorMessageUsernameAndPasswordIsRequired).getText();
-        return(result);
+        return (result);
     }
 
 }
