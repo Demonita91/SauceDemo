@@ -1,53 +1,49 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
-
-import static sun.plugin.javascript.navig.JSType.URL;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 
 public class LoginPage extends BasePage {
     public static final By USERNAME_INPUT = By.id("user-name");
     public static final By PASSWORD_INPUT = By.id("password");
     public static final By LOGIN_BUTTON = By.id("login-button");
-    public static final String URL = "https://www.saucedemo.com/";
-    public static By ErrorMessageUserNameIsRequired = By.xpath("//h3[text()='Username is required']");
-    public static By ErrorMessagePasswordIsRequired = By.xpath("//h3[text()='Password is required']");
-    public static By ErrorMessageUsernameAndPasswordIsRequired = By.xpath("//h3[@data-test='error']");
-    public static String emptyString = "";
-    public static String incorrectUsername = "ghjd%$:125'?ikil";
-    public static String incorrectPassword = "698$2%$:fhj'354787";
-    public static String errorMessageUsernameIsRequired = "Epic sadface: Username is required";
-    public static String errorMessagePasswordIsRequired = "Epic sadface: Password is required";
-    public static String errorMessageUsernameAndPasswordDoNotMatch = "Epic sadface: Username and password do not match any user in this service";
-    ;
+    private static final By ERROR = By.cssSelector("[data-test=error]");
+    private String endpoint = "index.html";
 
     public LoginPage(WebDriver driver) {
         super(driver);
-
     }
 
-    public void openPage() {
-        driver.get(URL);
+    public LoginPage isPageOpened() {
+        try {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(LOGIN_BUTTON));
+        } catch (TimeoutException ex) {
+            Assert.fail("Страница не загрузилась. Не найдена кнопка по локатору " + LOGIN_BUTTON);
+        }
+        return this;
     }
 
-    public void login(String username, String password) {
+    public LoginPage openPage() {
+        driver.get(URL + endpoint);
+        return this;
+    }
+    public LoginPage attemptToLogin(String username, String password) {
         driver.findElement(USERNAME_INPUT).sendKeys(username);
         driver.findElement(PASSWORD_INPUT).sendKeys(password);
         driver.findElement(LOGIN_BUTTON).click();
+        return this;
     }
 
-    public String errorMessageUserName() {
-        String result = driver.findElement(ErrorMessageUserNameIsRequired).getText();
-        return (result);
+    public ProductsPage login(String username, String password) {
+        attemptToLogin(username, password);
+        return new ProductsPage(driver);
     }
 
-    public String errorMessagePassword() {
-        String result = driver.findElement(ErrorMessagePasswordIsRequired).getText();
-        return (result);
-    }
-
-    public String errorMessageUsernameAndPassword() {
-        String result = driver.findElement(ErrorMessageUsernameAndPasswordIsRequired).getText();
+    public String getErrorMessage() {
+        String result = driver.findElement(ERROR).getText();
         return (result);
     }
 
