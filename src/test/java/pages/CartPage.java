@@ -17,10 +17,10 @@ public class CartPage extends BasePage {
 
     String priceLocator = "//*[contains(text(),'%s')]/ancestor::*[@class='cart_item']" + "//div[@class='inventory_item_price']";
     String quantityLocator = "//*[contains(text(),'%s')]/ancestor::*[@class='cart_item']" + "//div[@class='cart_quantity']";
-    String removeButton = "//*[contains(text(),'%s')]/ancestor::*[@class='cart_item']" + "//button[text()='REMOVE']";
 
     public static final By CHECKOUT_BUTTON = By.cssSelector(".checkout_button");
     public static final By CONTINUE_BUTTON = By.xpath("//a[text()='Continue Shopping']");
+    private static final By removeButton = By.xpath("//div[@class='cart_list']/div[@class='cart_item'][1]//button[text()='REMOVE']");
     private static final By listOfProducts = By.xpath("//div[@class='cart_item']");
 
     public CartPage(WebDriver driver) {
@@ -56,8 +56,8 @@ public class CartPage extends BasePage {
         driver.findElement(CONTINUE_BUTTON).click();
     }
 
-    public void removeOneItemFromCart(String productName) {
-        driver.findElement(By.xpath(String.format(removeButton,productName))).click();
+    public void removeOneItemFromCart() {
+        driver.findElement(removeButton).click();
     }
 
     public int listOfProducts() {

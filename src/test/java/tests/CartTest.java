@@ -11,7 +11,7 @@ public class CartTest extends BaseTest {
         loginPage.login(BaseTest.USERNAME, BaseTest.PASSWORD);
         productsPage.addToCart("Sauce Labs Fleece Jacket");
         productsPage.clickCartButton();
-        cartPage.removeOneItemFromCart("Sauce Labs Fleece Jacket");
+        cartPage.removeOneItemFromCart();
         Assert.assertEquals(0, cartPage.listOfProducts());
     }
 

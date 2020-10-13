@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 
 
 public class ProductsTest extends BaseTest {
-    @Test
+    @Test(retryAnalyzer = RetryAnalyzer.class)
     public void productShouldBeAddedIntoCart() {
 
         loginPage
