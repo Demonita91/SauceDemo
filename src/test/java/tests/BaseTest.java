@@ -5,10 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import pages.CartPage;
-import pages.CheckoutPage;
-import pages.LoginPage;
-import pages.ProductsPage;
+import pages.*;
 
 import java.util.concurrent.TimeUnit;
 
@@ -18,12 +15,15 @@ public class BaseTest {
     ProductsPage productsPage;
     CartPage cartPage;
     CheckoutPage checkoutPage;
+    CheckoutSecondPage checkoutSecondPage;
+    FinishPage finishPage;
+    MenuPage menuPage;
+
     public static final String USERNAME = "standard_user";
     public static final String PASSWORD = "secret_sauce";
     public static final String FIRST_NAME = "Kate";
     public static final String LAST_NAME = "Doll";
     public static final String POST_CODE = "200586 kl";
-
 
     @BeforeMethod
     public void setup() {
@@ -37,6 +37,9 @@ public class BaseTest {
         productsPage = new ProductsPage(driver);
         cartPage = new CartPage(driver);
         checkoutPage = new CheckoutPage(driver);
+        checkoutSecondPage = new CheckoutSecondPage(driver);
+        finishPage = new FinishPage(driver);
+        menuPage = new MenuPage(driver);
     }
 
     @AfterMethod
