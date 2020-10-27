@@ -18,6 +18,7 @@ public class FinishPage extends BasePage {
 
     public FinishPage openPage() {
         driver.get(URL + endpoint);
+        isPageOpened();
         return this;
     }
 

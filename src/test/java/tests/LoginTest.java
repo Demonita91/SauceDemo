@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.Description;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
@@ -10,6 +11,7 @@ public class LoginTest extends BaseTest {
     public static String incorrectPassword = "698$2%$:fhj'354787";
 
     @Test
+    @Description("Проверка на ошибку о не заполненном поле логин")
     public void loginShouldBeEmpty() {
         loginPage.openPage();
         loginPage.login(emptyString, BaseTest.PASSWORD);
@@ -17,6 +19,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Test
+    @Description("Проверка на ошибку о не заполненном поле пароль")
     public void passwordShouldBeEmpty() {
         loginPage.openPage();
         loginPage.login(BaseTest.USERNAME, emptyString);
@@ -24,6 +27,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Test
+    @Description("Проверка на ошибку о не заполненном поле пароль и логин")
     public void loginAndPasswordShouldBeEmpty() {
         loginPage.openPage();
         loginPage.login(emptyString, emptyString);
@@ -31,6 +35,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Test
+    @Description("Проверка на ошибку о не правильном логине и пароле")
     public void loginAndPasswordShouldBeIncorrect() {
         loginPage.openPage();
         loginPage.login(incorrectUsername, incorrectPassword);
@@ -38,6 +43,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Test
+    @Description("Проверка на ошибку о не правильном логине")
     public void loginShouldBeIncorrect() {
         loginPage.openPage();
         loginPage.login(incorrectUsername, PASSWORD);
@@ -45,6 +51,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Test
+    @Description("Проверка на ошибку о не правильном пароле")
     public void passwordShouldBeIncorrect() {
         loginPage.openPage();
         loginPage.login(BaseTest.USERNAME, incorrectPassword);

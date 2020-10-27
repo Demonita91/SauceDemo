@@ -1,10 +1,13 @@
 package tests;
 
+import io.qameta.allure.Description;
 import org.testng.annotations.Test;
 
 
 public class ProductsTest extends BaseTest {
+
     @Test(retryAnalyzer = RetryAnalyzer.class)
+    @Description("Проверка на прохождение авторизации пользователя и добавления товара в корзину")
     public void productShouldBeAddedIntoCart() {
 
         loginPage

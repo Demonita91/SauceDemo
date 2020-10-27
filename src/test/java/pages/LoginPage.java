@@ -28,6 +28,7 @@ public class LoginPage extends BasePage {
 
     public LoginPage openPage() {
         driver.get(URL + endpoint);
+        isPageOpened();
         return this;
     }
     public LoginPage attemptToLogin(String username, String password) {
