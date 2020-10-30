@@ -1,11 +1,13 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
+import utils.AllureUtils;
 
 import java.util.List;
 
@@ -27,12 +29,14 @@ public class CartPage extends BasePage {
         super(driver);
     }
 
+    @Step("Cart page was opened")
     public CartPage isPageOpened() {
         try {
             wait.until(ExpectedConditions.visibilityOfElementLocated(CHECKOUT_BUTTON));
         } catch (TimeoutException ex) {
             Assert.fail("Страница не загрузилась. Не найдена кнопка по локатору " + CHECKOUT_BUTTON);
         }
+        AllureUtils.takeScreenshot(driver);
         return this;
     }
 
@@ -48,14 +52,17 @@ public class CartPage extends BasePage {
         assertEquals(actualQuantity, quantity, "Price is not correct");
     }
 
+    @Step("Click on Checkout button")
     public void clickCheckout() {
         driver.findElement(CHECKOUT_BUTTON).click();
     }
 
+    @Step("Click on Continue button")
     public void clickContinueShopping() {
         driver.findElement(CONTINUE_BUTTON).click();
     }
 
+    @Step("Click on Remove button")
     public void removeOneItemFromCart(String productName) {
         driver.findElement(By.xpath(String.format(removeButton,productName))).click();
     }

@@ -5,6 +5,7 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
+import utils.AllureUtils;
 
 public class LoginPage extends BasePage {
     public static final By USERNAME_INPUT = By.id("user-name");
@@ -23,6 +24,7 @@ public class LoginPage extends BasePage {
         } catch (TimeoutException ex) {
             Assert.fail("Страница не загрузилась. Не найдена кнопка по локатору " + LOGIN_BUTTON);
         }
+        AllureUtils.takeScreenshot(driver);
         return this;
     }
 

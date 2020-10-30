@@ -5,6 +5,7 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
+import utils.AllureUtils;
 
 public class ProductsPage extends BasePage {
 
@@ -23,6 +24,7 @@ public class ProductsPage extends BasePage {
         } catch (TimeoutException ex) {
             Assert.fail("Страница не загрузилась. Не найдена кнопка по локатору " + PRODUCTS_LABEL);
         }
+        AllureUtils.takeScreenshot(driver);
         return this;
     }
 
