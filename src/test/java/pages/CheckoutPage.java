@@ -31,6 +31,7 @@ public class CheckoutPage extends BasePage {
 
     public void openPage() {
         driver.get(URL + endpoint);
+        isPageOpened();
     }
 
     public void enterCheckoutInformation(String firstName, String lastName, String postCode) {

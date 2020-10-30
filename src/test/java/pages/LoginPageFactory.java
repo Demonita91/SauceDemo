@@ -35,6 +35,7 @@ public class LoginPageFactory extends BasePage {
 
     public void openPage() {
         driver.get(URL);
+        isPageOpened();
     }
 
     public void login(String username, String password) {

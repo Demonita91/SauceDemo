@@ -5,10 +5,12 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import pages.*;
 
 import java.util.concurrent.TimeUnit;
 
+@Listeners(TestListener.class)
 public class BaseTest {
     WebDriver driver;
     LoginPage loginPage;
@@ -27,7 +29,7 @@ public class BaseTest {
 
     @BeforeMethod
     public void setup() {
-        System.setProperty("webdriver.chrome.driver", "src/test/resourses/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         options.setHeadless(false);
         driver = new ChromeDriver(options);

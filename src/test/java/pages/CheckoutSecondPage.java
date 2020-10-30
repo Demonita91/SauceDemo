@@ -27,6 +27,7 @@ public class CheckoutSecondPage extends BasePage {
 
     public void openPage() {
         driver.get(URL + endpoint);
+        isPageOpened();
     }
 
     public void clickCancel() {
