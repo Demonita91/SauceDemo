@@ -8,6 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
+import utils.AllureUtils;
 
 public class LoginPageFactory extends BasePage {
     public static final String URL = "https://www.saucedemo.com/";
@@ -29,6 +30,7 @@ public class LoginPageFactory extends BasePage {
         } catch (TimeoutException ex) {
             Assert.fail("Страница не загрузилась. Не найдена кнопка по локатору " + loginButton);
         }
+        AllureUtils.takeScreenshot(driver);
         return this;
     }
 

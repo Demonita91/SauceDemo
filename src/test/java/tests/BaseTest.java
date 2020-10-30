@@ -3,6 +3,7 @@ package tests;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
@@ -28,7 +29,7 @@ public class BaseTest {
     public static final String POST_CODE = "200586 kl";
 
     @BeforeMethod
-    public void setup() {
+    public void setup(ITestContext context) {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         options.setHeadless(false);
@@ -42,6 +43,9 @@ public class BaseTest {
         checkoutSecondPage = new CheckoutSecondPage(driver);
         finishPage = new FinishPage(driver);
         menuPage = new MenuPage(driver);
+        String variable = "driver";
+        System.out.println("Setting driver into context with variable name " + variable);
+        context.setAttribute(variable, driver);
     }
 
     @AfterMethod

@@ -5,6 +5,7 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
+import utils.AllureUtils;
 
 public class CheckoutSecondPage extends BasePage {
     public String endpoint = "checkout-step-two.html";
@@ -22,6 +23,7 @@ public class CheckoutSecondPage extends BasePage {
         } catch (TimeoutException ex) {
             Assert.fail("Страница не загрузилась. Не найдена кнопка по локатору " + FINISH_BUTTON);
         }
+        AllureUtils.takeScreenshot(driver);
         return this;
     }
 
