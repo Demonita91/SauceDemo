@@ -24,11 +24,12 @@ public class BaseTest {
     FinishPage finishPage;
     MenuPage menuPage;
 
-    public static final String USERNAME = "standard_user";
-    public static final String PASSWORD = "secret_sauce";
+//    public static final String USERNAME = "standard_user";
+//    public static final String PASSWORD = "secret_sauce";
     public static final String FIRST_NAME = "Kate";
     public static final String LAST_NAME = "Doll";
     public static final String POST_CODE = "200586 kl";
+
 
     @BeforeMethod
     public void setup(ITestContext context) {

@@ -21,7 +21,7 @@ public class CartTest extends BaseTest {
     @Description("Проверка на добавление товара в корзину и переход на следующую страницу")
     public void addProductToCartAndClickContinueShopping() {
         loginPage.openPage();
-        loginPage.login(BaseTest.USERNAME, BaseTest.PASSWORD);
+        loginPage.login(BaseTest.PASSWORD, BaseTest.PASSWORD);
         productsPage.addToCart("Sauce Labs Fleece Jacket");
         productsPage.clickCartButton();
         cartPage.clickCheckout();
