@@ -8,8 +8,7 @@ import org.testng.Assert;
 import utils.AllureUtils;
 
 public class CheckoutSecondPage extends BasePage {
-    public String endpoint = "checkout-step-two.html";
-
+    public static final String endpoint = "checkout-step-two.html";
     public static final By CANCEL_BUTTON = By.cssSelector(".cart_cancel_link");
     public static final By FINISH_BUTTON = By.cssSelector(".btn_action");
 

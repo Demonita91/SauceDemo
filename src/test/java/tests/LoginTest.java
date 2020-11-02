@@ -14,7 +14,7 @@ public class LoginTest extends BaseTest {
     @Description("Проверка на ошибку о не заполненном поле логин")
     public void loginShouldBeEmpty() {
         loginPage.openPage();
-        loginPage.login(emptyString, System.getenv("PASSWORD"));
+        loginPage.login(emptyString, BaseTest.PASSWORD);
         assertEquals(loginPage.getErrorMessage(), "Epic sadface: Username is required");
     }
 
@@ -22,7 +22,7 @@ public class LoginTest extends BaseTest {
     @Description("Проверка на ошибку о не заполненном поле пароль")
     public void passwordShouldBeEmpty() {
         loginPage.openPage();
-        loginPage.login(System.getenv("USERNAME"), emptyString);
+        loginPage.login(BaseTest.USERNAME, emptyString);
         assertEquals(loginPage.getErrorMessage(), "Epic sadface: Password is required");
     }
 
@@ -46,7 +46,7 @@ public class LoginTest extends BaseTest {
     @Description("Проверка на ошибку о не правильном логине")
     public void loginShouldBeIncorrect() {
         loginPage.openPage();
-        loginPage.login(incorrectUsername, System.getenv("PASSWORD"));
+        loginPage.login(incorrectUsername, BaseTest.PASSWORD);
         assertEquals(loginPage.getErrorMessage(), "Epic sadface: Username and password do not match any user in this service");
     }
 
@@ -54,7 +54,7 @@ public class LoginTest extends BaseTest {
     @Description("Проверка на ошибку о не правильном пароле")
     public void passwordShouldBeIncorrect() {
         loginPage.openPage();
-        loginPage.login(System.getenv("USERNAME"), incorrectPassword);
+        loginPage.login(BaseTest.USERNAME, incorrectPassword);
         assertEquals(loginPage.getErrorMessage(), "Epic sadface: Username and password do not match any user in this service");
     }
 

@@ -10,6 +10,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import pages.*;
 import utils.CapabilitiesGenerator;
+import utils.PropertyReader;
 
 import java.util.concurrent.TimeUnit;
 
@@ -24,11 +25,13 @@ public class BaseTest {
     FinishPage finishPage;
     MenuPage menuPage;
 
-//    public static final String USERNAME = "standard_user";
-//    public static final String PASSWORD = "secret_sauce";
+   // public static final String USERNAME = "standard_user";
+ //   public static final String PASSWORD = "secret_sauce";
     public static final String FIRST_NAME = "Kate";
     public static final String LAST_NAME = "Doll";
     public static final String POST_CODE = "200586 kl";
+    public static final String USERNAME = System.getenv().getOrDefault("username",PropertyReader.getProperty("username"));
+    public static final String PASSWORD = System.getenv().getOrDefault("password", PropertyReader.getProperty("password"));
 
 
     @BeforeMethod
@@ -39,6 +42,7 @@ public class BaseTest {
         driver = new ChromeDriver(CapabilitiesGenerator.getChromeOptions());
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+
         loginPage = new LoginPage(driver);
         productsPage = new ProductsPage(driver);
         cartPage = new CartPage(driver);
@@ -51,7 +55,7 @@ public class BaseTest {
         context.setAttribute(variable, driver);
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void closeBrowser() {
         driver.quit();
     }
