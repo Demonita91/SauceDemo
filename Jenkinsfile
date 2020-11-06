@@ -13,10 +13,11 @@ pipeline {
         }
 
     stages {
-        stage('Tesr Running') {
+        stage('Test Running') {
             steps {
                 // Get some code from a GitHub repository
-                git branch: "${params.BRANCH}", url:'https://github.com/Demonita91/SauceDemo.git'
+
+                git branch: "${params.BRANCH}", url: 'https://github.com/Demonita91/SauceDemo.git'
 
                 // Run Maven on a Unix agent.
               //  sh "mvn -Dmaven.test.failure.ignore=true clean package"
